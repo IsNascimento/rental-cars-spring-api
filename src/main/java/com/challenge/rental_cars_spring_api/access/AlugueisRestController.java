@@ -4,8 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.challenge.rental_cars_spring_api.core.queries.ListarAlugueisQuery;
 import com.challenge.rental_cars_spring_api.core.queries.dtos.AlugueisResponse;
@@ -31,5 +34,19 @@ public class AlugueisRestController {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE) }) })
     public ResponseEntity<AlugueisResponse> listarAlugueis() {
         return new ResponseEntity<>(listarAlugueisQuery.execute(), HttpStatus.OK);
+    }
+
+    @PostMapping("/upload")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Arquivo processado com sucesso."),
+            @ApiResponse(responseCode = "500", description = "Erro ao processar o arquivo.") })
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        try {
+            listarAlugueisQuery.processarArquivo(file);
+            return ResponseEntity.ok("Arquivo processado com sucesso!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Erro ao processar o arquivo: " + e.getMessage());
+        }
     }
 }
