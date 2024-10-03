@@ -19,10 +19,10 @@ public class Carro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "modelo")
+    @Column(name = "modelo", length = 50)
     private String modelo;
 
-    @Column(name = "ano")
+    @Column(name = "ano", length = 4)
     private String ano;
 
     @Column(name = "qtd_passageiros")
@@ -31,9 +31,9 @@ public class Carro implements Serializable {
     @Column(name = "km")
     private Integer km;
 
-    @Column(name = "fabricante")
+    @Column(name = "fabricante", length = 50)
     private String fabricante;
 
-    @Column(name = "vlr_diaria")
+    @Column(name = "vlr_diaria", precision = 7, scale = 2)
     private BigDecimal vlrDiaria;
 }
