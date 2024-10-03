@@ -1,7 +1,5 @@
 package com.challenge.rental_cars_spring_api.access;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.challenge.rental_cars_spring_api.core.queries.ListarAlugueisQuery;
+import com.challenge.rental_cars_spring_api.core.queries.dtos.AlugueisResponse;
 import com.challenge.rental_cars_spring_api.core.queries.dtos.ListarAlugueisQueryResultItem;
 
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,7 +29,7 @@ public class AlugueisRestController {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ListarAlugueisQueryResultItem.class)) }),
             @ApiResponse(responseCode = "500", description = "Erro interno no servidor", content = {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE) }) })
-    public ResponseEntity<List<ListarAlugueisQueryResultItem>> listarAlugueis() {
+    public ResponseEntity<AlugueisResponse> listarAlugueis() {
         return new ResponseEntity<>(listarAlugueisQuery.execute(), HttpStatus.OK);
     }
 }
