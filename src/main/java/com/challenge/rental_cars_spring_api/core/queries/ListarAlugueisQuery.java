@@ -41,6 +41,11 @@ public class ListarAlugueisQuery {
 
     @Transactional
     public void processarArquivo(MultipartFile file) throws Exception {
+
+        if (!file.getOriginalFilename().endsWith(".rtn")) {
+            throw new IllegalArgumentException("O arquivo deve ter a extensão .rtn");
+        }
+        
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             String linha;
             while ((linha = reader.readLine()) != null) {
