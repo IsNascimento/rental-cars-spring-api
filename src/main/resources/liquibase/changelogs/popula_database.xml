@@ -31,7 +31,7 @@
             <column name="vlr_diaria" valueNumeric="225.00"/>
         </insert>
         <insert tableName="carro">
-            <column name="modelo" value="VITRUS"/>
+            <column name="modelo" value="VIRTUS"/>
             <column name="ano" value="2023"/>
             <column name="qtd_passageiros" valueNumeric="5"/>
             <column name="km" valueNumeric="24551"/>
@@ -202,11 +202,19 @@
             <column name="data_aluguel" valueDate="2022-12-29"/>
             <column name="data_devolucao" valueDate="2023-01-06"/>
             <column name="valor" valueNumeric="2740.00"/>
-            <column name="pago" valueBoolean="true"/>
+            <column name="pago" valueBoolean="false"/>
         </insert>
         <insert tableName="aluguel">
             <column name="carro_id" valueNumeric="9"/>
             <column name="cliente_id" valueNumeric="9"/>
+            <column name="data_aluguel" valueDate="2023-01-02"/>
+            <column name="data_devolucao" valueDate="2023-01-04"/>
+            <column name="valor" valueNumeric="300.00"/>
+            <column name="pago" valueBoolean="false"/>
+        </insert>
+        <insert tableName="aluguel">
+            <column name="carro_id" valueNumeric="1"/>
+            <column name="cliente_id" valueNumeric="1"/>
             <column name="data_aluguel" valueDate="2023-01-02"/>
             <column name="data_devolucao" valueDate="2023-01-04"/>
             <column name="valor" valueNumeric="300.00"/>
