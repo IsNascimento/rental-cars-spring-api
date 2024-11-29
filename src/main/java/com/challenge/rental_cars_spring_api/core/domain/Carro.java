@@ -9,10 +9,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "carro")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "carro")
 public class Carro implements Serializable {
 
     @Id

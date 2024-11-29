@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "rental-cars.props.datetime-format",
+      "type": "java.lang.String",
+      "description": "Formato padrão para a serialização das datas."
+  }
+] }

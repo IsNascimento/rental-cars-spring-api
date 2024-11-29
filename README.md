@@ -47,10 +47,10 @@ Aluguel: Armazena os dados dos alugueis dos carros.
 
 Seu trabalho:
 
-- Faça um fork do projeto, crie uma nova branch com seu nome a partir da Master, desenvolva as funcionalidades a seguir e submita um pull request
+- [x] Faça um fork do projeto, crie uma nova branch com seu nome a partir da Master, desenvolva as funcionalidades a seguir e submita um pull request
   no projeto.
-- Desenvolva um endpoit para listar todos os carros da frota.
-- Desnvolva um endpoint que receba um arquivo .rtn e faça seu processamento e popule os dados na tabela ALUGUEL.
+- [x] Desenvolva um endpoit para listar todos os carros da frota.
+- [x] Desnvolva um endpoint que receba um arquivo .rtn e faça seu processamento e popule os dados na tabela ALUGUEL.
   - Esse processo deve ler o arquivo (exemplo: RentReport.rtn que se encontra no diretório Resources do projeto), que nada mais é do que um arquivo de texto posicional.
   - Cada linha desse arquivo RentReport.rtn possui 20 caracteres e contém os dados do aluguel de um veículo.
   - As posições dos dados no arquivo são as seguintes:
@@ -64,7 +64,7 @@ Seu trabalho:
   - Caso algum carro ou cliente lido no arquivo não seja encontrado na base de dados, o sistema deve gerar um log de
     alerta informando que o ID não foi encontrado, e o processo deve continuar.
 
-- Desenvolva um outro endpoint que liste os alugueis.
+- [x] Desenvolva um outro endpoint que liste os alugueis.
     - Essa listagem deve incluir todos os registros dos alugueis encontrados na base de dados.
     - Essa lista de alugueis deve conter os seguintes dados:
         - Data do aluguel
@@ -80,6 +80,6 @@ Seu trabalho:
 
 Diferenciais:
 
-- Logue as informações que achar pertinentes.
-- Trate os possíves erros de forma adequada.
-- Certifique-se que a aplicação esteja bem testada com testes unitários.
+- [x] Logue as informações que achar pertinentes.
+- [x] Trate os possíves erros de forma adequada.
+- [x] Certifique-se que a aplicação esteja bem testada com testes unitários.
