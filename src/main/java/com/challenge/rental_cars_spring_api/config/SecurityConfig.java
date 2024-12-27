@@ -1,4 +1,4 @@
-package com.challenge.config;
+package com.challenge.rental_cars_spring_api.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -20,15 +21,21 @@ public class SecurityConfig {
     @Value("${cors.allowed-origins-front}")
     String frontEndUrl;
 
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorizeRequests ->
-                        authorizeRequests
-                                .anyRequest().authenticated()
+                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                        .requestMatchers(new AntPathRequestMatcher("/api/swagger-ui/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/v3/api-docs/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/carros/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/aluguel/**")).permitAll()
+                        .anyRequest().authenticated()
                 );
         return http.build();
     }
+
+
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {

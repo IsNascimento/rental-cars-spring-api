@@ -1,4 +1,4 @@
-package com.challenge.rental_cars_spring_api.core.domain;
+package com.challenge.rental_cars_spring_api.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

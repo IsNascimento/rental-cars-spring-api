@@ -7,5 +7,7 @@
 	                    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
     <include file="changelogs/criacao_database.xml" relativeToChangelogFile="true" />
+    <include file="changelogs/criacao_tabela_cliente.xml" relativeToChangelogFile="true" />
+    <include file="changelogs/criacao_tabela_aluguel.xml" relativeToChangelogFile="true" />
     <include file="changelogs/popula_database.xml" relativeToChangelogFile="true" />
 </databaseChangeLog>
