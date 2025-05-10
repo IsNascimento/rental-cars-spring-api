@@ -1,7 +1,7 @@
 package com.challenge.rental_cars_spring_api.access;
 
 import com.challenge.rental_cars_spring_api.core.queries.ListarCarrosQuery;
-import com.challenge.rental_cars_spring_api.core.queries.dtos.ListarCarrosQueryResultItem;
+import com.challenge.rental_cars_spring_api.core.dto.ListarCarrosQueryResultItem;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/carros")
+@RequestMapping("/api/carros")
 @RequiredArgsConstructor
 public class CarrosRestController {
     private final ListarCarrosQuery listarCarrosQuery;

@@ -25,8 +25,10 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .anyRequest().authenticated()
-                );
+                                .anyRequest().permitAll()
+                )
+                .cors();
+
         return http.build();
     }
 
@@ -41,10 +43,10 @@ public class SecurityConfig {
                         .allowedMethods(HttpMethod.GET.name(),
                                 HttpMethod.POST.name(),
                                 HttpMethod.PUT.name(),
-                                HttpMethod.DELETE.name());
+                                HttpMethod.DELETE.name())
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
-
-
 }

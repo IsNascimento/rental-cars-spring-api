@@ -16,7 +16,8 @@
 	<properties>
 		<java.version>21</java.version>
 		<spring.boot.version>3.2.4</spring.boot.version>
-		<springdoc.version>2.5.0</springdoc.version>
+		<spring.security.version>6.2.3</spring.security.version>
+		<springdoc.version>2.3.0</springdoc.version>
 		<sei.java.client.version>4.1.2-1</sei.java.client.version>
 		<postgresql.version>42.6.2</postgresql.version>
 		<h2.version>2.3.232</h2.version>
@@ -118,6 +119,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- iText para geração de PDFs -->
+		<dependency>
+			<groupId>com.itextpdf</groupId>
+			<artifactId>itextpdf</artifactId>
+			<version>5.5.13.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -134,7 +142,16 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 </project>
