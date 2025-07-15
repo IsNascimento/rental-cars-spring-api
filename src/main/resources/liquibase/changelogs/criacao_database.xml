@@ -16,6 +16,32 @@
             <column name="fabricante" type="varchar(50)"/>
             <column name="vlr_diaria" type="decimal(7,2)"/>
         </createTable>
+
+        <createTable tableName="cliente">
+            <column name="id" type="int8" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_cliente"/>
+            </column>
+            <column name="nome" type="varchar(100)"/>
+            <column name="cpf" type="varchar(11)"/>
+            <column name="cnh" type="varchar(11)"/>
+            <column name="telefone" type="varchar(13)"/>
+        </createTable>
+
+        <createTable tableName="aluguel">
+            <column name="id" type="int8" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_locacao"/>
+            </column>
+            <column name="carro_id" type="int8">
+                <constraints foreignKeyName="fk_locacao_carro" references="carro(id)"/>
+            </column>
+            <column name="cliente_id" type="int8">
+                <constraints foreignKeyName="fk_locacao_cliente" references="cliente(id)"/>
+            </column>
+            <column name="data_aluguel" type="date"/>
+            <column name="data_devolucao" type="date"/>
+            <column name="valor" type="decimal(7,2)"/>
+            <column name="pago" type="boolean"/>
+        </createTable>
     </changeSet>
 
 </databaseChangeLog>

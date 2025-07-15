@@ -14,6 +14,9 @@ public class ListarCarrosQuery {
     private final CarroRepository carroRepository;
 
     public List<ListarCarrosQueryResultItem> execute() {
-        return null;
+        return carroRepository.findAll()
+                .stream()
+                .map(ListarCarrosQueryResultItem::from)
+                .toList();
     }
 }
