@@ -5,17 +5,58 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="criar-tabela-carro" author="name">
-        <createTable tableName="carro">
+         <createTable tableName="carro">
             <column name="id" type="int8" autoIncrement="true">
                 <constraints primaryKey="true" primaryKeyName="pk_carro"/>
             </column>
-            <column name="modelo" type="varchar(50)"/>
-            <column name="ano" type="varchar(4)"/>
-            <column name="qtd_passageiros" type="int8"/>
-            <column name="km" type="int8"/>
-            <column name="fabricante" type="varchar(50)"/>
-            <column name="vlr_diaria" type="decimal(7,2)"/>
+            <column name="modelo" type="VARCHAR(50)"/>
+            <column name="ano" type="VARCHAR(4)"/>
+            <column name="qtd_passageiros" type="BIGINT"/>
+            <column name="km" type="BIGINT"/>
+            <column name="fabricante" type="VARCHAR(50)"/>
+            <column name="vlr_diaria" type="DECIMAL(7,2)"/>
         </createTable>
+        
+      
+        <createTable tableName="cliente">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_cliente"/>
+            </column>
+            <column name="nome" type="VARCHAR(100)"/>
+            <column name="cpf" type="VARCHAR(11)"/>
+            <column name="cnh" type="VARCHAR(11)"/>
+            <column name="telefone" type="VARCHAR(13)"/>
+        </createTable>
+
+        <createTable tableName="aluguel">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_aluguel"/>
+            </column>
+            <column name="carro_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cliente_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_aluguel" type="DATE"/>
+            <column name="data_devolucao" type="DATE"/>
+            <column name="valor" type="DECIMAL(7,2)"/>
+            <column name="pago" type="BOOLEAN"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseTableName="aluguel"
+            baseColumnNames="carro_id"
+            constraintName="fk_aluguel_carro"
+            referencedTableName="carro"
+            referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+            baseTableName="aluguel"
+            baseColumnNames="cliente_id"
+            constraintName="fk_aluguel_cliente"
+            referencedTableName="cliente"
+            referencedColumnNames="id"/>
     </changeSet>
 
 </databaseChangeLog>
