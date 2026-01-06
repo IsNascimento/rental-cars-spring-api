@@ -37,7 +37,7 @@ Aluguel: Armazena os dados dos alugueis dos carros.
 | Coluna         |       Tipo       |
 |----------------|:----------------:|
 | ID             |     int8 PK      |
-| CARRO_ID       |  int8 FK(CARRO   |
+| CARRO_ID       |  int8 FK(CARRO)  |
 | CLIENTE_ID     | int8 FK(CLIENTE) |
 | DATA_ALUGUEL   |       date       |
 | DATA_DEVOLUCAO |       date       |
@@ -83,3 +83,6 @@ Diferenciais:
 - Logue as informações que achar pertinentes.
 - Trate os possíves erros de forma adequada.
 - Certifique-se que a aplicação esteja bem testada com testes unitários.
+
+- Teste manual
+  - http://localhost:8080/api/swagger-ui.html 

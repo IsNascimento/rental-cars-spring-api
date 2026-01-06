@@ -23,10 +23,11 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authorizeRequests ->
-                        authorizeRequests
-                                .anyRequest().authenticated()
-                );
+            .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+            .requestMatchers("/api/carros/**", "/api/alugarCarros/**", "/api/arquivoRtn/**").permitAll()
+            .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/index.html").permitAll()
+            .anyRequest()
+            .authenticated());
         return http.build();
     }
 

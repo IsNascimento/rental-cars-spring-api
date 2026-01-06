@@ -23,6 +23,7 @@
 		<liquibase.version>4.24.0</liquibase.version>
 		<lombok.version>1.18.30</lombok.version>
 		<jackson.version>2.15.4</jackson.version>
+		<spring.security.version>5.6.0</spring.security.version> 
 	</properties>
 
 	<dependencies>
@@ -116,6 +117,18 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
 		</dependency>
 
 	</dependencies>
