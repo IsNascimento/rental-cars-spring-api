@@ -1,7 +1,6 @@
 package com.challenge.rental_cars_spring_api.access;
 
-import com.challenge.rental_cars_spring_api.service.CarrosService;
-import com.challenge.rental_cars_spring_api.core.dtos.ListaResultadoItemCarroDto;
+import com.challenge.rental_cars_spring_api.service.AlugaCarroService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,23 +14,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/carros")
+@RequestMapping("/alugarCarros")
 @RequiredArgsConstructor
-public class CarrosRestController {
+public class AlugaCarrosRestController {
 
-    private final CarrosService carrosService;
+    private final AlugaCarroService alugaCarroService;
 
-    @GetMapping("/listarCarros")
-    @Operation(summary = "Lista todos os carros disponiveis")
+    @GetMapping
+    @Operation(summary = "Lista carros alugados e debitos")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Retorna a lista com os carros encontrados.", content = {
-                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = ListaResultadoItemCarroDto.class))}),
+            @ApiResponse(responseCode = "200", description = "Retorna a lista de carros alugados e em debito.", content = {
+                    @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = AlugaCarroService.Result.class))}),
             @ApiResponse(responseCode = "500", description = "Erro interno no servidor", content = {
                     @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)})})
-    public ResponseEntity<List<ListaResultadoItemCarroDto>> listarCarros() {
-        return new ResponseEntity<>(carrosService.execute(), HttpStatus.OK);
+    public ResponseEntity<AlugaCarroService.Result> listarAlugueis() {
+        return new ResponseEntity<>(alugaCarroService.execute(), HttpStatus.OK);
     }
+
 }
